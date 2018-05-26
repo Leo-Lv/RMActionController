@@ -523,9 +523,11 @@
 - (NSInteger)cornerRadiusForCurrentStyle {
     switch (self.style) {
         case RMActionControllerStyleWhite:
+        case RMActionControllerStyleExtraWhite:
         case RMActionControllerStyleBlack:
             return [NSProcessInfo runningAtLeastiOS9] ? 12 : 4;
         case RMActionControllerStyleSheetWhite:
+        case RMActionControllerStyleSheetExtraWhite:
         case RMActionControllerStyleSheetBlack:
             return 0;
     }
@@ -534,9 +536,11 @@
 - (NSInteger)marginForCurrentStyle {
     switch (self.style) {
         case RMActionControllerStyleWhite:
+        case RMActionControllerStyleExtraWhite:
         case RMActionControllerStyleBlack:
             return 10;
         case RMActionControllerStyleSheetWhite:
+        case RMActionControllerStyleSheetExtraWhite:
         case RMActionControllerStyleSheetBlack:
             return 0;
     }
@@ -544,6 +548,9 @@
 
 - (UIBlurEffectStyle)containerBlurEffectStyleForCurrentStyle {
     switch (self.style) {
+        case RMActionControllerStyleExtraWhite:
+        case RMActionControllerStyleSheetExtraWhite:
+            return UIBlurEffectStyleLight;
         case RMActionControllerStyleWhite:
         case RMActionControllerStyleSheetWhite:
             return UIBlurEffectStyleExtraLight;
@@ -551,14 +558,16 @@
         case RMActionControllerStyleSheetBlack:
             return UIBlurEffectStyleDark;
         default:
-            return UIBlurEffectStyleExtraLight;
+            return UIBlurEffectStyleLight;
     }
 }
 
 - (UIBlurEffectStyle)backgroundBlurEffectStyleForCurrentStyle {
     switch (self.style) {
         case RMActionControllerStyleWhite:
+        case RMActionControllerStyleExtraWhite:
         case RMActionControllerStyleSheetWhite:
+        case RMActionControllerStyleSheetExtraWhite:
             return UIBlurEffectStyleDark;
         case RMActionControllerStyleBlack:
         case RMActionControllerStyleSheetBlack:
@@ -600,7 +609,9 @@
 - (UIStatusBarStyle)preferredStatusBarStyle {
     switch (self.style) {
         case RMActionControllerStyleWhite:
+        case RMActionControllerStyleExtraWhite:
         case RMActionControllerStyleSheetWhite:
+        case RMActionControllerStyleSheetExtraWhite:
             return UIStatusBarStyleLightContent;
         case RMActionControllerStyleBlack:
         case RMActionControllerStyleSheetBlack:
